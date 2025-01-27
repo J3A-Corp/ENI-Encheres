@@ -2,13 +2,13 @@ package bo;
 
 public class Retraits {
     private String rue;
-    private int codePostal;
+    private String codePostal;
     private String ville;
 
     public Retraits() {
     }
 
-    public Retraits(String rue, int codePostal, String ville) {
+    public Retraits(String rue, String codePostal, String ville) {
         this.rue = rue;
         this.codePostal = codePostal;
         this.ville = ville;
@@ -22,11 +22,11 @@ public class Retraits {
         this.rue = rue;
     }
 
-    public int getCodePostal() {
+    public String getCodePostal() {
         return codePostal;
     }
 
-    public void setCodePostal(int codePostal) {
+    public void setCodePostal(String codePostal) {
         this.codePostal = codePostal;
     }
 

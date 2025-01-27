@@ -1,4 +1,4 @@
 package dal;
 
-public class DAOUtilisateur {
+public interface DAOUtilisateur {
 }

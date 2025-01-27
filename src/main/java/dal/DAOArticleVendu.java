@@ -1,4 +1,4 @@
 package dal;
 
-public class DAOArticleVendu {
+public interface DAOArticleVendu {
 }

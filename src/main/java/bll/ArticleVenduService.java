@@ -1,4 +1,4 @@
 package bll;
 
-public class ArticleVenduService {
+public interface ArticleVenduService {
 }

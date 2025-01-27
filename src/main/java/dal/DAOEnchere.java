@@ -1,4 +1,4 @@
 package dal;
 
-public class DAOEnchere {
+public interface DAOEnchere {
 }

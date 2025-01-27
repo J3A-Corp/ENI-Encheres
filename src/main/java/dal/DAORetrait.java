@@ -1,4 +1,4 @@
 package dal;
 
-public class DAORetrait {
+public interface DAORetrait {
 }

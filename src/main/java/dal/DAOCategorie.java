@@ -1,4 +1,4 @@
 package dal;
 
-public class DAOCategorie {
+public interface DAOCategorie {
 }

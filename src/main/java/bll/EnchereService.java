@@ -13,5 +13,7 @@ public interface EnchereService {
 
     Enchere getEnchereByNoArticleNNoUtilisateur(int noArticle, int noUtilisateur);
 
+    Enchere getEnchereByNoArticleNNoUtilisateur(int noArticle);
+
     void updateEnchere(Enchere enchere);
 }

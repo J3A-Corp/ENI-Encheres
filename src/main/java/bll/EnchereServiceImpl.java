@@ -33,7 +33,12 @@ public class EnchereServiceImpl implements EnchereService{
 
     @Override
     public Enchere getEnchereByNoArticleNNoUtilisateur(int noArticle, int noUtilisateur) {
-        return daoEnchere.read(noArticle, noUtilisateur);
+        return null;
+    }
+
+    @Override
+    public Enchere getEnchereByNoArticleNNoUtilisateur(int noArticle) {
+        return daoEnchere.read(noArticle);
     }
 
     @Override

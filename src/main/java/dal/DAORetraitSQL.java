@@ -54,8 +54,8 @@ delete(retrait.getArticleVendu().getNoArticle());
     }
 
     @Override
-    public void delete(int id) {
-        jdbcTemplate.update(DELETE, id);
+    public void delete(int noArticle) {
+        jdbcTemplate.update(DELETE, noArticle);
     }
 }
 

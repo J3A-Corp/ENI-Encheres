@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UtilisateurServiceImpl implements UtilisateurService{
+public class UtilisateurServiceImpl implements UtilisateurService {
 
     private DAOUtilisateur daoUtilisateur;
 
@@ -33,4 +33,5 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     @Override
     public Utilisateur getUtilisateurByNoUtilisateur(int noUtilisateur) {
         return daoUtilisateur.read(noUtilisateur);
+    }
 }

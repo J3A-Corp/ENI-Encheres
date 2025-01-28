@@ -1,6 +1,6 @@
 package dal;
 
-import bo.Utilisateurs;
+import bo.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -38,23 +38,23 @@ public class DAOUtilisateurSQL implements DAOUtilisateur{
     }
 
     @Override
-    public int create(Utilisateurs utilisateurs) {
+    public int create(Utilisateur utilisateur) {
 ////j'ai rajouté ça pour voir si le bcrypt en base de donnée changeait qqchose
-        String encodedPassword = passwordEncoder.encode(utilisateurs.getMotDePasse());
-        utilisateurs.setMotDePasse(encodedPassword);
+        String encodedPassword = passwordEncoder.encode(utilisateur.getMotDePasse());
+        utilisateur.setMotDePasse(encodedPassword);
         var namedparameters = new MapSqlParameterSource();
 
-        namedparameters.addValue("pseudo", utilisateurs.getPseudo());
-        namedparameters.addValue("nom", utilisateurs.getNom());
-        namedparameters.addValue("prenom", utilisateurs.getPrenom());
-        namedparameters.addValue("email", utilisateurs.getEmail());
-        namedparameters.addValue("telephone", utilisateurs.getTelephone());
-        namedparameters.addValue("rue", utilisateurs.getRue());
-        namedparameters.addValue("code_postal", utilisateurs.getCodePostal());
-        namedparameters.addValue("ville", utilisateurs.getVille());
-        namedparameters.addValue("mot_de_passe", utilisateurs.getMotDePasse());
-        namedparameters.addValue("credit", utilisateurs.getCredit());
-        namedparameters.addValue("admin", utilisateurs.isAdministrateur());
+        namedparameters.addValue("pseudo", utilisateur.getPseudo());
+        namedparameters.addValue("nom", utilisateur.getNom());
+        namedparameters.addValue("prenom", utilisateur.getPrenom());
+        namedparameters.addValue("email", utilisateur.getEmail());
+        namedparameters.addValue("telephone", utilisateur.getTelephone());
+        namedparameters.addValue("rue", utilisateur.getRue());
+        namedparameters.addValue("code_postal", utilisateur.getCodePostal());
+        namedparameters.addValue("ville", utilisateur.getVille());
+        namedparameters.addValue("mot_de_passe", utilisateur.getMotDePasse());
+        namedparameters.addValue("credit", utilisateur.getCredit());
+        namedparameters.addValue("admin", utilisateur.isAdministrateur());
 
         var keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(INSERT, namedparameters, keyHolder);
@@ -63,22 +63,22 @@ public class DAOUtilisateurSQL implements DAOUtilisateur{
     }
 
     @Override
-    public List<Utilisateurs> read() {
-        return jdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Utilisateurs.class));
+    public List<Utilisateur> read() {
+        return jdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Utilisateur.class));
     }
     @Override
-    public Utilisateurs read(int noUtilisateur) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, BeanPropertyRowMapper.newInstance(Utilisateurs.class), noUtilisateur);
-    }
-
-    @Override
-    public void update(Utilisateurs utilisateurs) {
-        jdbcTemplate.update(UPDATE, utilisateurs.getPseudo(), utilisateurs.getNom(), utilisateurs.getPrenom(), utilisateurs.getEmail(), utilisateurs.getTelephone(), utilisateurs.getRue(), utilisateurs.getCodePostal(), utilisateurs.getVille(), utilisateurs.getMotDePasse(), utilisateurs.getCredit(), utilisateurs.isAdministrateur());
+    public Utilisateur read(int noUtilisateur) {
+        return jdbcTemplate.queryForObject(SELECT_BY_ID, BeanPropertyRowMapper.newInstance(Utilisateur.class), noUtilisateur);
     }
 
     @Override
-    public void delete(Utilisateurs utilisateurs) {
-        delete(utilisateurs.getNoUtilisateur());
+    public void update(Utilisateur utilisateur) {
+        jdbcTemplate.update(UPDATE, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse(), utilisateur.getCredit(), utilisateur.isAdministrateur());
+    }
+
+    @Override
+    public void delete(Utilisateur utilisateur) {
+        delete(utilisateur.getNoUtilisateur());
     }
 
     @Override

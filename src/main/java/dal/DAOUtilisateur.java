@@ -1,6 +1,6 @@
 package dal;
 
-import bo.Utilisateurs;
+import bo.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -12,15 +12,15 @@ import java.util.List;
 public interface DAOUtilisateur {
 
 
-    int create(Utilisateurs utilisateurs);
+    int create(Utilisateur utilisateur);
 
-    List<Utilisateurs> read();
+    List<Utilisateur> read();
 
-    Utilisateurs read(int id);
+    Utilisateur read(int id);
 
-    void update(Utilisateurs utilisateurs);
+    void update(Utilisateur utilisateur);
 
-    void delete(Utilisateurs utilisateurs);
+    void delete(Utilisateur utilisateur);
 
     void delete(int noUtilisateur);
 }

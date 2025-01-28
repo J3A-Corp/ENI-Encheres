@@ -4,14 +4,20 @@ public class Retrait {
     private String rue;
     private String codePostal;
     private String ville;
+    private ArticleVendu articleVendu;
 
     public Retrait() {
     }
 
-    public Retrait(String rue, String codePostal, String ville) {
+    public Retrait(String rue, String codePostal, String ville, ArticleVendu articleVendu) {
         this.rue = rue;
         this.codePostal = codePostal;
         this.ville = ville;
+        this.articleVendu = articleVendu;
+    }
+
+    public ArticleVendu getArticleVendu() {
+        return articleVendu;
     }
 
     public String getRue() {

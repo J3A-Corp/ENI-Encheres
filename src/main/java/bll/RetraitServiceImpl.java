@@ -22,14 +22,11 @@ public class RetraitServiceImpl implements RetraitService{
     }
 
     @Override
-    public void deleteRetrait(int noArticle, int noUtilisateur) {
-        daoRetrait.delete(noArticle, noUtilisateur);
+    public void deleteRetrait(int noArticle) {
+        daoRetrait.delete(noArticle);
     }
 
-    @Override
-    public List<Retrait> getRetrait() {
-        return daoRetrait.read();
-    }
+
 
     @Override
     public Retrait getRetraitByNoArticle(int noArticle) {

@@ -1,6 +1,6 @@
 package dal;
 
-import bo.Utilisateurs;
+import bo.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,7 +18,7 @@ public class DAOUtilisateurSQL implements DAOUtilisateur{
     static final String SELECT_ALL = "SELECT * from utilisateur";
     static final String SELECT_BY_ID = "SELECT * from utilisateur where no_utilisateur = :no_utilisateur";
     static final String SELECT_BY_PSEUDO = "SELECT * from utilisateur where pseudo = :pseudo";
-    static final String INSERT = "INSERT  INTO utilisateur ([pseudo],[nom],[prenom],[email],[telephone],[rue],[code_postal],[ville],[mot_de_passe],[credit],[administrateur]) VALUES (?,?,?,?,?,?,?,?,0,?)";
+    static final String INSERT = "INSERT  INTO utilisateur ([pseudo],[nom],[prenom],[email],[telephone],[rue],[code_postal],[ville],[mot_de_passe],[credit],[administrateur]) VALUES (:psuedo,:nom,:prenom,:email,:telephone,:rue,:code_postal,:ville,:mot_de_passe,0,0)";
     static final String DELETE = "DELETE FROM utilisateur where no_utilisateur=?";
     static final String UPDATE = "UPDATE utilisateur set pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=?,credit=?,administrateur=? where id=?";
 
@@ -38,7 +38,7 @@ public class DAOUtilisateurSQL implements DAOUtilisateur{
     }
 
     @Override
-    public int create(Utilisateurs utilisateurs) {
+    public int create(Utilisateur utilisateurs) {
 ////j'ai rajouté ça pour voir si le bcrypt en base de donnée changeait qqchose
         String encodedPassword = passwordEncoder.encode(utilisateurs.getMotDePasse());
         utilisateurs.setMotDePasse(encodedPassword);
@@ -63,21 +63,21 @@ public class DAOUtilisateurSQL implements DAOUtilisateur{
     }
 
     @Override
-    public List<Utilisateurs> read() {
-        return jdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Utilisateurs.class));
+    public List<Utilisateur> read() {
+        return jdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Utilisateur.class));
     }
     @Override
-    public Utilisateurs read(int noUtilisateur) {
-        return jdbcTemplate.queryForObject(SELECT_BY_ID, BeanPropertyRowMapper.newInstance(Utilisateurs.class), noUtilisateur);
+    public Utilisateur read(int noUtilisateur) {
+        return jdbcTemplate.queryForObject(SELECT_BY_ID, BeanPropertyRowMapper.newInstance(Utilisateur.class), noUtilisateur);
     }
 
     @Override
-    public void update(Utilisateurs utilisateurs) {
+    public void update(Utilisateur utilisateurs) {
         jdbcTemplate.update(UPDATE, utilisateurs.getPseudo(), utilisateurs.getNom(), utilisateurs.getPrenom(), utilisateurs.getEmail(), utilisateurs.getTelephone(), utilisateurs.getRue(), utilisateurs.getCodePostal(), utilisateurs.getVille(), utilisateurs.getMotDePasse(), utilisateurs.getCredit(), utilisateurs.isAdministrateur());
     }
 
     @Override
-    public void delete(Utilisateurs utilisateurs) {
+    public void delete(Utilisateur utilisateurs) {
         delete(utilisateurs.getNoUtilisateur());
     }
 
@@ -86,4 +86,4 @@ public class DAOUtilisateurSQL implements DAOUtilisateur{
         jdbcTemplate.update(DELETE, noUtilisateur);
     }
 }
-}
+

@@ -7,9 +7,10 @@ import java.util.List;
 public interface RetraitService {
     void addRetrait(Retrait retrait);
 
-    void deleteRetrait(int noArticle, int noUtilisateur);
 
-    List<Retrait> getRetrait();
+    void deleteRetrait(int noArticle);
+
+
 
     Retrait getRetraitByNoArticle(int noArticle);
 

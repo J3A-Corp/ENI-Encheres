@@ -23,7 +23,7 @@ public class WebConfiguration {
         localeChangeInterceptor.setParamName("language");
         return localeChangeInterceptor;
     }
-    @Override
+
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }

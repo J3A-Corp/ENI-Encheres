@@ -2,9 +2,11 @@ package bll;
 
 import bo.ArticleVendu;
 import dal.DAOArticleVendu;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ArticleVenduServiceImpl implements ArticleVenduService {
 
     private DAOArticleVendu daoArticleVendu;

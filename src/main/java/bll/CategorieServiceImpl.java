@@ -2,9 +2,12 @@ package bll;
 
 import bo.Categorie;
 import dal.DAOCategorie;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class CategorieServiceImpl implements CategorieService {
 
 

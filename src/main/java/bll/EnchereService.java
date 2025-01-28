@@ -7,11 +7,11 @@ import java.util.List;
 public interface EnchereService {
     void addEnchere(Enchere enchere);
 
-    void deleteEnchere(int noArticle, int no);
+    void deleteEnchere(int noArticle, int noUtilisateur);
 
     List<Enchere> getEnchere();
 
-    Enchere getEncherebyID(int noArticle);
+    Enchere getEnchereByNoArticleNNoUtilisateur(int noArticle, int noUtilisateur);
 
     void updateEnchere(Enchere enchere);
 }

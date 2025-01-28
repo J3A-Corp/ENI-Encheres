@@ -2,7 +2,7 @@ package bo;
 
 import java.io.Serializable;
 
-public class Utilisateurs implements Serializable {
+public class Utilisateur implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,10 +21,10 @@ public class Utilisateurs implements Serializable {
     private boolean administrateur;
 
     // Constructeurs
-    public Utilisateurs() {
+    public Utilisateur() {
     }
 
-    public Utilisateurs(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
+    public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
         this.noUtilisateur = noUtilisateur;
         this.pseudo = pseudo;
         this.nom = nom;

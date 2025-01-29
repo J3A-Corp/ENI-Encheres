@@ -3,6 +3,7 @@ package configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -14,8 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
-@EnableWebSecurity
-@Configuration
+//@EnableWebSecurity
+//@Configuration
 public class SecurityConfiguration {
     private final DataSource dataSource;
 
@@ -46,6 +47,9 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(auth -> {
 
             auth.requestMatchers(HttpMethod.GET, "/index").permitAll();
+            auth.requestMatchers(HttpMethod.POST, "/index").permitAll();
+
+            auth.requestMatchers("/").permitAll();
             auth.requestMatchers("/creerUtilisateur").permitAll();
 //            auth.requestMatchers(HttpMethod.POST, "/Liste").hasRole("ADMIN");
 //            auth.requestMatchers(HttpMethod.GET, "/Liste").permitAll();
@@ -76,7 +80,7 @@ public class SecurityConfiguration {
                 );
         // Autres configurations de sécurité
 
-
+        http.formLogin(Customizer.withDefaults());
 //déconnexion de l'utilisateur
 
 

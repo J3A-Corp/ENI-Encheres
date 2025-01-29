@@ -32,8 +32,7 @@ public class ArticleVenduServiceImpl implements ArticleVenduService {
 
     @Override
     public ArticleVendu getArticleVendubyID(int noArticle) {
-        return daoArticleVendu.read(noArticle);
-    }
+        return daoArticleVendu.read(noArticle); }
 
     @Override
     public void updateArticleVendu(ArticleVendu articleVendu) {

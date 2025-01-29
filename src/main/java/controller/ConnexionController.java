@@ -1,10 +1,13 @@
 package controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.security.provisioning.UserDetailsManager;
 
 @Controller
@@ -22,4 +25,13 @@ public class ConnexionController {
         return "login";
     }
 
+    @PostMapping("/logout")
+    public String performLogout(HttpServletRequest request) {
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+
+            request.getSession().invalidate();
+            SecurityContextHolder.clearContext();
+        }
+        return "redirect:/login";
+    }
 }
